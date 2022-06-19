@@ -7,6 +7,8 @@ public class BallController : MonoBehaviour
     public Vector2 speed;
     public Vector2 resetPosition;
 
+    public bool isRight;
+
     private Rigidbody2D rig;
 
     // Start is called before the first frame update
@@ -20,6 +22,7 @@ public class BallController : MonoBehaviour
     public void ResetBall()
     {
         transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
+        rig.velocity = speed;
     }
 
     public void ActivatePUSpeedUp(float magnitude)
@@ -27,9 +30,15 @@ public class BallController : MonoBehaviour
         rig.velocity *= magnitude;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if(other.tag == "Kanan")
+        {
+            isRight = true;
+        }
+        else if(other.tag == "Kiri")
+        {
+            isRight = false;
+        }
     }
 }

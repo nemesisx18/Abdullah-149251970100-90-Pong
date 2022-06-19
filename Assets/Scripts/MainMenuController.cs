@@ -13,6 +13,7 @@ public class MainMenuController : MonoBehaviour
 
     public void OpenAuthor()
     {
+        SceneManager.LoadScene("Credit");
         Debug.Log("Created by Abdullah-149251970100-90");
     }
 }
